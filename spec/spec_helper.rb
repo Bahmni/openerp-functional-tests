@@ -9,8 +9,11 @@ require 'bundler/setup'
 require 'capybara'
 require 'capybara/dsl'
 require 'ooor'
+require 'headless'
+
 
 Capybara.default_driver = :selenium
+Capybara.javascript_driver = :selenium
 Capybara.app_host = "http://www.google.com"
 
 require 'selenium-webdriver'
@@ -51,4 +54,11 @@ RSpec.configure do |config|
   #     --seed 1234
   #config.order = "random"
   config.include Capybara::DSL
+  if Capybara.current_driver == :selenium
+    require 'headless'
+
+    headless = Headless.new
+    headless.start
+  end
+
 end
