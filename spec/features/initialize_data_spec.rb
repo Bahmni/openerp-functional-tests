@@ -1,11 +1,11 @@
 require 'spec_helper'
 require 'rubygems'
 require 'ooor'
-require 'OpenERPProperties'
+require 'TestConfig'
 
 describe Ooor do
   before(:all) do
-    @ooor = OpenERPProperties.new().ooor
+    @ooor = TestConfig.new().ooor
   end
 
   describe "Basic creations" do

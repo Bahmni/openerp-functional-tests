@@ -10,6 +10,7 @@ require 'capybara'
 require 'capybara/dsl'
 require 'ooor'
 require 'headless'
+require 'TestConfig'
 
 
 Capybara.default_driver = :selenium
@@ -17,7 +18,7 @@ Capybara.javascript_driver = :selenium
 Capybara.app_host = "http://www.google.com"
 
 require 'selenium-webdriver'
-Selenium::WebDriver::Firefox::Binary.path='/usr/bin/firefox'
+Selenium::WebDriver::Firefox::Binary.path=TestConfig.new.firefox_path
 
 
 

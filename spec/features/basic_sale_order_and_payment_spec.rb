@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'OpenERPProperties'
+require 'TestConfig'
 
 describe "Test OpenERP Sale Order and Payment Flow" do
 
@@ -17,7 +17,7 @@ describe "Test OpenERP Sale Order and Payment Flow" do
   end
 
   def log_in
-    props = OpenERPProperties.new()
+    props = TestConfig.new()
     visit props.url
     fill_in('login', :with => props.username)
     fill_in('password', :with => props.password)
