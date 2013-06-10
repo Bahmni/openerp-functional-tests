@@ -17,7 +17,7 @@ Capybara.javascript_driver = :selenium
 Capybara.app_host = "http://www.google.com"
 
 require 'selenium-webdriver'
-Selenium::WebDriver::Firefox::Binary.path='/Applications/Firefox.app/Contents/MacOS/firefox-bin'
+Selenium::WebDriver::Firefox::Binary.path='/usr/bin/firefox'
 
 
 

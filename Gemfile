@@ -21,3 +21,4 @@ gem 'selenium-webdriver'
 gem 'shoulda-matchers'
 gem 'rspec'
 gem "ooor", "~> 1.9.2"
+gem 'headless'
