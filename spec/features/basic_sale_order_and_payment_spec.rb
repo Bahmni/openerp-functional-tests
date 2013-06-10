@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'OpenERPProperties'
 
-describe "Test OpenERP Sale Order and Payment Flow", :js => true,:type => :request do
+describe "Test OpenERP Sale Order and Payment Flow" do
 
   before  do
     log_in()
@@ -19,10 +19,6 @@ describe "Test OpenERP Sale Order and Payment Flow", :js => true,:type => :reque
   def log_in
     props = OpenERPProperties.new()
     visit props.url
-    sleep(5)
-    page.has_content?("login")
-    puts page.html
-
     fill_in('login', :with => props.username)
     fill_in('password', :with => props.password)
     select props.database, :from => 'db'

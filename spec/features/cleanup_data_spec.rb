@@ -1,8 +1,6 @@
 require 'spec_helper'
 require 'rubygems'
 require 'ooor'
-require 'OpenERPProperties'
-
 
 describe Ooor do
   before(:all) do
@@ -17,7 +15,7 @@ describe Ooor do
       p.destroy()
     end
 
-    it "delete test customer" do
+    it "should be able to create a customer" do
       p_id=ResPartner.search([['name', 'ilike', 'testCustomer1']])[0]
       p = ResPartner.find(p_id)
       p.destroy()

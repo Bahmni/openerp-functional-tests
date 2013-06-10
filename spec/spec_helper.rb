@@ -1,5 +1,4 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
-# This file is copied to spec/ when you run 'rails generate rspec:install'
 #ENV["RAILS_ENV"] ||= 'test'
 #require File.expand_path("../../config/environment", __FILE__)
 #require 'rspec/rails'
@@ -9,26 +8,13 @@ require 'rubygems'
 require 'bundler/setup'
 require 'capybara'
 require 'capybara/dsl'
-require 'capybara/rspec'
-require 'headless'
 require 'ooor'
 
+Capybara.default_driver = :selenium
 Capybara.app_host = "http://www.google.com"
 
 require 'selenium-webdriver'
-require 'capybara-webkit'
-#require 'capybara/poltergeist'
-#Capybara.javascript_driver = :poltergeist
-
-Capybara.default_driver = :selenium
-Capybara.javascript_driver = :selenium
-Capybara.current_driver = :selenium
-Capybara.default_wait_time = 10
-
-
-#Selenium::WebDriver::Firefox::Binary.path='/Applications/Firefox.app/Contents/MacOS/firefox-bin'
-
-
+Selenium::WebDriver::Firefox::Binary.path='/Applications/Firefox.app/Contents/MacOS/firefox-bin'
 
 
 
@@ -64,15 +50,5 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   #config.order = "random"
-  #config.include Capybara::DSL
-  #Capybara.register_driver :poltergeist do |app|
-  #  Capybara::Poltergeist::Driver.new(app, :debug => true,:js_errors => false)
-  #end
-# change the condition to fit your setup
-  if Capybara.current_driver == :selenium
-    require 'headless'
-
-    headless = Headless.new
-    headless.start
-  end
+  config.include Capybara::DSL
 end
