@@ -18,6 +18,10 @@ source 'https://rubygems.org'
 
 gem 'capybara', '~> 2.1.0'
 gem 'selenium-webdriver'
+gem 'capybara-webkit'
+gem 'headless'
 gem 'shoulda-matchers'
 gem 'rspec'
-gem "ooor", "~> 1.9.2"
+gem 'ooor', '~> 1.9.2'
+gem 'poltergeist'
+gem 'headless'
