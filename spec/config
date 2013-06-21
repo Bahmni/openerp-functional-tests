@@ -1,7 +1,7 @@
-url : http://172.18.2.1:8069
-rpc_url : http://172.18.2.1:8069/xmlrpc
+url : http://localhost:8069
+rpc_url : http://localhost:8069/xmlrpc
 db_password : postgres
 username : admin
 password : password
-database : openerp3
+database : openerp
 firefox_path : /usr/bin/firefox
