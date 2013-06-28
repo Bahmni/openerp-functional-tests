@@ -18,7 +18,6 @@ Capybara.javascript_driver = :selenium
 Capybara.app_host = "http://www.google.com"
 
 require 'selenium-webdriver'
-Selenium::WebDriver::Firefox::Binary.path=TestConfig.new.firefox_path
 
 
 
@@ -60,6 +59,12 @@ RSpec.configure do |config|
 
     headless = Headless.new
     headless.start
+  end
+
+  config.before(:all) do
+    TestConfig.init
+    puts "TestConfig.firefox_path : #{TestConfig.firefox_path}"
+    Selenium::WebDriver::Firefox::Binary.path=TestConfig.firefox_path
   end
 
 end

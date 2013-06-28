@@ -3,14 +3,26 @@ require 'TestConfig'
 
 describe "Test OpenERP Sale Order and Payment Flow" do
 
-  before  do
-    log_in()
-    navigate_to_sale_order()
-    create_sale_order()
-    pay()
+  before(:each)  do
+    ProductProduct.new(:name => "testProduct1", :categ_id => 1).create()
+    ResPartner.new(:name => "testCustomer1").create()
   end
 
-    it "calculates total balance" do
+  after(:each)  do
+    p_id=ProductProduct.search([['name', 'ilike', 'testProduct1']])[0]
+    p = ProductProduct.find(p_id)
+    p.destroy()
+
+    p_id=ResPartner.search([['name', 'ilike', 'testCustomer1']])[0]
+    p = ResPartner.find(p_id)
+    p.destroy()
+  end
+
+  it "calculates total balance" do
+      log_in()
+      navigate_to_sale_order()
+      create_sale_order()
+      pay()
       sleep(1)
       expect(page).to have_content("-450")
     end
