@@ -1,5 +1,5 @@
 #!/bin/sh
-rvm use ruby-1.9.3-p429
+rvm use 1.9.3
 set -ex
 bundle install
 bundle exec rspec spec/features/*.rb
