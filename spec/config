@@ -1,5 +1,5 @@
-url : http://localhost:8089
-rpc_url : http://localhost:8089/xmlrpc
+url : http://localhost:8069
+rpc_url : http://localhost:8069/xmlrpc
 db_password : postgres
 username : admin
 password : password
