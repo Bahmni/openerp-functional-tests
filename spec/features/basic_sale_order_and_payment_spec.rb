@@ -51,7 +51,7 @@ describe "Test OpenERP Sale Order and Payment Flow" do
     end
 
   def pay
-    sleep(4)
+    sleep(6)
     fill_in('Paid Amount', :with => "450.00")
   end
 
