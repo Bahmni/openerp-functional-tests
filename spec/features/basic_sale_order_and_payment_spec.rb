@@ -4,21 +4,18 @@ require 'TestConfig'
 describe "Test OpenERP Sale Order and Payment Flow" do
 
   before(:each)  do
-    p_ids=ProductProduct.search([['name', 'ilike', 'testProduct1']])
-    if(!p_ids.any?)
-      ProductProduct.new(:name => "testProduct1", :categ_id => 1).create()
-      ResPartner.new(:name => "testCustomer1").create()
-    end
+    ProductProduct.new(:name => "testProduct1", :categ_id => 1).create()
+    ResPartner.new(:name => "testCustomer1").create()
   end
 
   after(:each)  do
-    #p_id=ProductProduct.search([['name', 'ilike', 'testProduct1']])[0]
-    #p = ProductProduct.find(p_id)
-    #p.destroy()
-    #
-    #p_id=ResPartner.search([['name', 'ilike', 'testCustomer1']])[0]
-    #p = ResPartner.find(p_id)
-    #p.destroy()
+    p_id=ProductProduct.search([['name', 'ilike', 'testProduct1']])[0]
+    p = ProductProduct.find(p_id)
+    p.destroy()
+
+    p_id=ResPartner.search([['name', 'ilike', 'testCustomer1']])[0]
+    p = ResPartner.find(p_id)
+    p.destroy()
   end
 
   it "calculates total balance" do
@@ -26,7 +23,7 @@ describe "Test OpenERP Sale Order and Payment Flow" do
       navigate_to_sale_order()
       create_sale_order()
       pay()
-      sleep(4)
+      sleep(1)
       expect(page).to have_content("-450")
     end
   end
@@ -41,9 +38,7 @@ describe "Test OpenERP Sale Order and Payment Flow" do
    end
 
   def navigate_to_sale_order
-    sleep(1)
     click_link('Sales')
-    sleep(1)
     click_link('Sales Orders')
     sleep(3)
     within('.oe_list_buttons') { click_button('Create') }
@@ -52,12 +47,11 @@ describe "Test OpenERP Sale Order and Payment Flow" do
   def create_sale_order
       select_customer()
       select_product()
-      sleep(1)
       click_button('Confirm Sale')
     end
 
   def pay
-    sleep(5)
+    sleep(2)
     fill_in('Paid Amount', :with => "450.00")
   end
 
@@ -72,9 +66,7 @@ describe "Test OpenERP Sale Order and Payment Flow" do
   def select_product
     click_link('Add an item')
     product_selector = '.ui-menu-item a:contains(\"testProduct1\")'
-    #within('.oe_form_sheetbg') { fill_in 'Customer', :with => 'testCustomer1' }
     find(:xpath, '//span[@data-fieldname="product_id"]//input[@class="ui-autocomplete-input"]').set "testProduct1"
-    sleep(1)
     page.execute_script " $('#{product_selector}').
           trigger(\"mouseenter\").click();"
   end
