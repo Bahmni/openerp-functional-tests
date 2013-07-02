@@ -59,6 +59,7 @@ describe "Test OpenERP Sale Order and Payment Flow" do
 
   def pay
     sleep(10)
+    print(page.html)
     #within('.oe_form_sheetbg') {find_field('journal_id').find(:option,'Cash (INR)').click}
     #within('.oe_form_sheetbg') {fill_in('Paid Amount', :with => "450.00")}
     ##find('select', :text => 'Payment Method').set "Cash (INR)"
@@ -67,7 +68,7 @@ describe "Test OpenERP Sale Order and Payment Flow" do
     #find('select', :name => 'journal_id').set "RSBY (INR)"
     #find_field('restrictions__rating_movies').find('option[selected]').text
     #within('.oe_form_sheetbg') {find_field('journal_id').find(:option,'Cash (INR)').click}
-    sleep(5)
+    #sleep(5)
 
   end
 
