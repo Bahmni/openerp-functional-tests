@@ -1,7 +1,7 @@
-url : http://localhost:8089
-rpc_url : http://localhost:8089/xmlrpc
+url : http://localhost:8069
+rpc_url : http://localhost:8069/xmlrpc
 db_password : postgres
 username : admin
 password : password
-database : openerp2
+database : openerp
 firefox_path : /Applications/Firefox.app/Contents/MacOS/firefox-bin

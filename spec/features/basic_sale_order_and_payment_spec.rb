@@ -4,18 +4,21 @@ require 'TestConfig'
 describe "Test OpenERP Sale Order and Payment Flow" do
 
   before(:each)  do
-    ProductProduct.new(:name => "testProduct1", :categ_id => 1).create()
-    ResPartner.new(:name => "testCustomer1").create()
+    p_ids=ProductProduct.search([['name', 'ilike', 'testProduct1']])
+    if(!p_ids.any?)
+      ProductProduct.new(:name => "testProduct1", :categ_id => 1).create()
+      ResPartner.new(:name => "testCustomer1").create()
+    end
   end
 
   after(:each)  do
-    p_id=ProductProduct.search([['name', 'ilike', 'testProduct1']])[0]
-    p = ProductProduct.find(p_id)
-    p.destroy()
-
-    p_id=ResPartner.search([['name', 'ilike', 'testCustomer1']])[0]
-    p = ResPartner.find(p_id)
-    p.destroy()
+    #p_id=ProductProduct.search([['name', 'ilike', 'testProduct1']])[0]
+    #p = ProductProduct.find(p_id)
+    #p.destroy()
+    #
+    #p_id=ResPartner.search([['name', 'ilike', 'testCustomer1']])[0]
+    #p = ResPartner.find(p_id)
+    #p.destroy()
   end
 
   it "calculates total balance" do
@@ -23,7 +26,6 @@ describe "Test OpenERP Sale Order and Payment Flow" do
       navigate_to_sale_order()
       create_sale_order()
       pay()
-      sleep(3)
       expect(page).to have_content("-450")
     end
   end
@@ -38,7 +40,9 @@ describe "Test OpenERP Sale Order and Payment Flow" do
    end
 
   def navigate_to_sale_order
+    sleep(2)
     click_link('Sales')
+    sleep(1)
     click_link('Sales Orders')
     sleep(3)
     within('.oe_list_buttons') { click_button('Create') }
@@ -46,13 +50,24 @@ describe "Test OpenERP Sale Order and Payment Flow" do
 
   def create_sale_order
       select_customer()
+      sleep(1)
       select_product()
+      sleep(1)
       click_button('Confirm Sale')
-    end
+      sleep(1)
+  end
 
   def pay
-    sleep(6)
-    fill_in('Paid Amount', :with => "450.00")
+    sleep(3)
+    within('.oe_form') {fill_in('Paid Amount', :with => "450.00")}
+    #find('select', :text => 'Payment Method').set "Cash (INR)"
+    #find_field('Payment Method').set  "RSBY (INR)"
+    #find(:xpath, '//select[@name="journal_id"]//input[@class="ui-autocomplete-input"]').set "RSBY (INR)"
+    #find('select', :name => 'journal_id').set "RSBY (INR)"
+    #find_field('restrictions__rating_movies').find('option[selected]').text
+    within('.oe_form') {find_field('journal_id').find(:option,'Cash (INR)').click}
+    sleep(5)
+
   end
 
   def select_customer
