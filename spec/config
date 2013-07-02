@@ -4,4 +4,4 @@ db_password : postgres
 username : admin
 password : password
 database : openerp
-firefox_path : /Applications/Firefox.app/Contents/MacOS/firefox-bin
+firefox_path : /usr/bin/firefox
