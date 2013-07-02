@@ -59,13 +59,13 @@ describe "Test OpenERP Sale Order and Payment Flow" do
 
   def pay
     sleep(3)
-    within('.oe_form') {fill_in('Paid Amount', :with => "450.00")}
+    within('.oe_form_container') {fill_in('Paid Amount', :with => "450.00")}
     #find('select', :text => 'Payment Method').set "Cash (INR)"
     #find_field('Payment Method').set  "RSBY (INR)"
     #find(:xpath, '//select[@name="journal_id"]//input[@class="ui-autocomplete-input"]').set "RSBY (INR)"
     #find('select', :name => 'journal_id').set "RSBY (INR)"
     #find_field('restrictions__rating_movies').find('option[selected]').text
-    within('.oe_form') {find_field('journal_id').find(:option,'Cash (INR)').click}
+    within('.oe_form_container') {find_field('journal_id').find(:option,'Cash (INR)').click}
     sleep(5)
 
   end
