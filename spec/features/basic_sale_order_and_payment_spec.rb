@@ -23,7 +23,7 @@ describe "Test OpenERP Sale Order and Payment Flow" do
       navigate_to_sale_order()
       create_sale_order()
       pay()
-      sleep(1)
+      sleep(3)
       expect(page).to have_content("-450")
     end
   end
@@ -51,7 +51,7 @@ describe "Test OpenERP Sale Order and Payment Flow" do
     end
 
   def pay
-    sleep(2)
+    sleep(4)
     fill_in('Paid Amount', :with => "450.00")
   end
 
