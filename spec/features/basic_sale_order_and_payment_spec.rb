@@ -58,7 +58,7 @@ describe "Test OpenERP Sale Order and Payment Flow" do
   end
 
   def pay
-    sleep(3)
+    sleep(10)
     within('.oe_form_sheetbg') {fill_in('Paid Amount', :with => "450.00")}
     #find('select', :text => 'Payment Method').set "Cash (INR)"
     #find_field('Payment Method').set  "RSBY (INR)"
