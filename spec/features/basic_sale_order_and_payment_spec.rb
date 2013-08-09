@@ -81,7 +81,7 @@ describe "Test OpenERP Sale Order and Payment Flow" do
   end
 
   def select_product
-    click_link('Add an item')
+    click_link('Add an Item')
     product_selector = '.ui-menu-item a:contains(\"testProduct1\")'
     find(:xpath, '//span[@data-fieldname="product_id"]//input[@class="ui-autocomplete-input"]').set "testProduct1"
     page.execute_script " $('#{product_selector}').
