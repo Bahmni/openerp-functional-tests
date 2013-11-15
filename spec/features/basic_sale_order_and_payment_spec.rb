@@ -50,7 +50,7 @@ describe "Test OpenERP Sale Order and Payment Flow" do
 
   def create_sale_order
       select_customer()
-      sleep(1)
+      sleep(4)
       select_product()
       sleep(1)
       click_button('Confirm Sale')
