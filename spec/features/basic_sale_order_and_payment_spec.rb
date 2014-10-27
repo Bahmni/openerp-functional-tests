@@ -44,7 +44,7 @@ describe "Test OpenERP Sale Order and Payment Flow" do
     click_link('Sales')
     sleep(1)
     click_link('Sales Orders')
-    sleep(3)
+    sleep(10)
     within('.oe_list_buttons') { click_button('Create') }
   end
 
