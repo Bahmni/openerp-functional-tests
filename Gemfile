@@ -18,7 +18,7 @@ source 'https://rubygems.org'
 
 gem 'capybara', '~> 2.1.0'
 gem 'selenium-webdriver'
-gem 'shoulda-matchers'
+gem 'shoulda-matchers', '=2.8.0'
 gem 'rspec'
 gem "ooor", "~> 1.9.2"
 gem 'headless'
